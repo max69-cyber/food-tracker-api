@@ -1,0 +1,21 @@
+// @ts-check
+import js from '@eslint/js';
+import tseslint from 'typescript-eslint';
+
+export default tseslint.config(
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  {
+    rules: {
+      semi: ['error', 'always'],
+      '@/semi': ['error', 'always'],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
+    },
+  },
+  {
+    ignores: ['dist/**', 'node_modules/**', 'src/generated/**'],
+  },
+);
